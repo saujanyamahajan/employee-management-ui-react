@@ -9,3 +9,4 @@ export interface Employee {
   dateOfJoining?: string;
   isActive?: boolean;
 }
+
