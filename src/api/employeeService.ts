@@ -30,3 +30,7 @@ export const insertEmployee = async(employee: Employee) : Promise<Employee[]>=>{
     const response = await apiInstance.post<Employee[]>(ApiEndpoints.INSERT_EMPLOYEE,employee);
   return response.data;
 }
+export const updateEmployee= async(id: number,employee: Employee):Promise<Employee>=>{
+    const response = await apiInstance.put<Employee>(`${ApiEndpoints.UPDATE_EMPLOYEE_BY_ID}/${id}`,employee);
+  return response.data;
+}
