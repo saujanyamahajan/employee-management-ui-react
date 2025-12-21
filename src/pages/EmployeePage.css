@@ -1,0 +1,5 @@
+.employee-page {
+  padding: 24px;
+  background: #f5f6fa; /* optional: matches dashboard style */
+  min-height: 100vh;
+}

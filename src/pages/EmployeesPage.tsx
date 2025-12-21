@@ -1,7 +1,9 @@
 import EmployeeList from "./EmployeeListPage";  
+import "./EmployeePage.css";
+
 const EmployeesPage = () => {
   return (
-    <div>
+      <div className="employee-page">
         <h5>Employees</h5>
       <EmployeeList />
     </div>
