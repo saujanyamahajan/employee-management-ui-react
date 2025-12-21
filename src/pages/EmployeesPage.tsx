@@ -2,7 +2,7 @@ import EmployeeList from "./EmployeeListPage";
 const EmployeesPage = () => {
   return (
     <div>
-        <h1>Employees</h1>
+        <h5>Employees</h5>
       <EmployeeList />
     </div>
   );

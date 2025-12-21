@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import type { Employee } from "../models/Employee";
 import { getEmployees } from "../api/employeeService";
 import EmployeeCard from "../components/EmployeeCard";
+import "./EmployeeListPage.css";
+
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -11,11 +13,8 @@ const EmployeeList = () => {
   useEffect(() => {
     const loadEmployees = async () => {
       try {
-        console.log("1");
         const data = await getEmployees();
-        console.log("2");
         setEmployees(data);
-
       } catch (err) {
         setError("Failed to load employees");
         console.error(err);
@@ -31,11 +30,11 @@ const EmployeeList = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="employee-list">
       {employees.length === 0 ? (
         <p>No employees found</p>
       ) : (
-        employees.map(emp => (
+        employees.map((emp) => (
           <EmployeeCard key={emp.employeeId} employee={emp} />
         ))
       )}

@@ -1,0 +1,14 @@
+.navBar {
+  background-color: black;
+  padding: 16px 24px;
+}
+
+.navBar h2 {
+  color: white;
+  margin: 0;
+}
+
+.subHeading {
+  margin-top: 4px;
+  color: grey;
+}

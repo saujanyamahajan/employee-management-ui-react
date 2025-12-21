@@ -1,0 +1,74 @@
+
+
+/* Card */
+.employee-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header */
+.employee-card__header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.employee-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1f2347;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.employee-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.designation {
+  margin: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Body */
+.employee-card__body {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Footer */
+.employee-card__footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Status badge */
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
