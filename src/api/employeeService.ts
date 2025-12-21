@@ -26,3 +26,7 @@ export const getEmployeeById = async (id: number): Promise<Employee> => {
 export const deleteEmployeeById = async (id: number): Promise<void> => {
   await apiInstance.delete(`${ApiEndpoints.DELETE_EMPLOYEE_BY_ID}/${id}`);
 };
+export const insertEmployee = async(employee: Employee) : Promise<Employee[]>=>{
+    const response = await apiInstance.post<Employee[]>(ApiEndpoints.INSERT_EMPLOYEE,employee);
+  return response.data;
+}
