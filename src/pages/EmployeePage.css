@@ -1,5 +1,38 @@
-.employee-page {
+.header {
   padding: 24px;
   background: #f5f6fa; /* optional: matches dashboard style */
   min-height: 100vh;
+}
+.employees-page {
+  padding: 24px;
+}
+
+.add-btn {
+  background: #2f2a4a;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+.search-box {
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.header-actions{
+align-items: center;
+display: flex;
+justify-content: space-between;
 }
