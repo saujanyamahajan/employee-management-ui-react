@@ -1,33 +1,53 @@
-import EmployeeList from "./EmployeeListPage";  
+import { useEffect, useState } from "react";
+import type { Employee } from "../models/Employee";
+import { getEmployees } from "../api/employeeService";
+import EmployeeList from "./EmployeeListPage";
 import "./EmployeePage.css";
 
 const EmployeesPage = () => {
+  const [employees, setEmployees] = useState<Employee[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const loadEmployees = async () => {
+      try {
+        const data = await getEmployees();
+        setEmployees(data);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("Failed to load employees");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEmployees();
+  }, []);
+
   return (
-     <div className="employees-page">
-      {/* Header */}
+    <div className="employees-page">
       <div className="header">
-                <div className="header-actions">
         <div>
           <h1>Employees</h1>
-          {/* <p>{filteredEmployees.length} total employees</p> */}
         </div>
-        <button className="add-btn">+ Add Employee</button>
+        <div className="sub-heading">
+          <p>{employees.length} total employees</p>
+          <button className="add-btn">+ Add Employee</button>
         </div>
-
-         {/* Search Box */}
-      <div className="search-box">
-        <input
-          type="text"
-          placeholder="Search employees by name, email, department, or role..."
-          // value={searchTerm}
-          // onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
-                  <EmployeeList />
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="Search employees by name, email, department, or role..."
+          />
+        </div>
+        <EmployeeList employees={employees} loading={loading} error={error} />
       </div>
     </div>
   );
 };
 
 export default EmployeesPage;
-
