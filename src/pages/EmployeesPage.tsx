@@ -3,11 +3,13 @@ import type { Employee } from "../models/Employee";
 import { getEmployees } from "../api/employeeService";
 import EmployeeList from "./EmployeeListPage";
 import "./EmployeePage.css";
+import AddEmployeeModal from "../components/AddEmployeeModal";
 
 const EmployeesPage = () => {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  // const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const loadEmployees = async () => {
@@ -36,7 +38,12 @@ const EmployeesPage = () => {
         </div>
         <div className="sub-heading">
           <p>{employees.length} total employees</p>
-          <button className="add-btn">+ Add Employee</button>
+          <button
+            className="add-btn"
+            // onClick={() => setIsModalOpen(true)}
+          >
+            + Add Employee{" "}
+          </button>
         </div>
         <div className="search-box">
           <input
@@ -45,6 +52,10 @@ const EmployeesPage = () => {
           />
         </div>
         <EmployeeList employees={employees} loading={loading} error={error} />
+        {/* {isModalOpen && ( 
+           <AddEmployeeModal onClose={() => setIsModalOpen(false)} />
+        )}*/}
+        <AddEmployeeModal />
       </div>
     </div>
   );

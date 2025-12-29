@@ -1,5 +1,5 @@
 import axios from "axios"; //a promise-based HTTP client
-import type { Employee } from "../models/Employee";
+import type { Employee, CreateEmployee } from "../models/Employee";
 
 const apiInstance = axios.create({
   baseURL: 'http://localhost:5244/api',
@@ -26,7 +26,7 @@ export const getEmployeeById = async (id: number): Promise<Employee> => {
 export const deleteEmployeeById = async (id: number): Promise<void> => {
   await apiInstance.delete(`${ApiEndpoints.DELETE_EMPLOYEE_BY_ID}/${id}`);
 };
-export const insertEmployee = async(employee: Employee) : Promise<Employee[]>=>{
+export const insertEmployee = async(employee: CreateEmployee) : Promise<Employee[]>=>{
     const response = await apiInstance.post<Employee[]>(ApiEndpoints.INSERT_EMPLOYEE,employee);
   return response.data;
 }
