@@ -69,10 +69,10 @@ function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div className="bg-slate-300 rounded-md px-7 py-7 absolute right-0 z-50 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-        <div className="flex items-center gap-60 ">
+      <div className="bg-slate-300 rounded-md px-7 py-7 absolute right-0 z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+        <div className="flex items-center ">
           <h1 className="text-xl font-bold">Add New Employee</h1>
-          <button type="button" onClick={onClose}>
+          <button type="button" onClick={onClose} className="ml-auto">
             <img src={CloseIcon} alt="Close" className="h-5 w-5" />
           </button>
         </div>
