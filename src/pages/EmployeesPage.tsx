@@ -31,7 +31,7 @@ const EmployeesPage = () => {
   }, []);
 
   return (
-    <>
+    <div className="relative">
       <div className="employees-page bg-red-100">
         <div className="header">
           <div>
@@ -57,7 +57,7 @@ const EmployeesPage = () => {
       {isModalOpen && (
         <AddEmployeeModal onClose={() => setIsModalOpen(false)} />
       )}
-    </>
+    </div>
   );
 };
 
