@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { CreateEmployee } from "../models/Employee";
 import { insertEmployee } from "../api/employeeService";
+import CloseIcon from "../assets/close.svg";
 
 type FormData = {
   firstName: string;
@@ -21,7 +22,11 @@ const initialState: FormData = {
   status: "",
 };
 
-function AddEmployeeModal() {
+type AddEmployeeModalProps = {
+  onClose: () => void;
+};
+
+function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [loading, setLoading] = useState(false);
 
@@ -47,7 +52,12 @@ function AddEmployeeModal() {
         email: formData.email,
         phone: formData.phone,
         department: formData.department,
+        designation: formData.role,
+        isActive: formData.status === "active",
       };
+
+      console.log("Submitting payload:", newEmployee);
+
       const response = await insertEmployee(newEmployee);
       console.log("Employee added:", response);
       setFormData(initialState);
@@ -59,16 +69,16 @@ function AddEmployeeModal() {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <div className="flex items-center bg-">
+      <div className="bg-blue-700">
+        <div className="flex items-center bg-red-800">
           <h3>Add New Employee</h3>
-          <span>X</span>
+          <button type="button" onClick={onClose}>
+            <img src={CloseIcon} alt="Close" className="h-5 w-5" />
+          </button>
         </div>
-        <div>
-          <p>
-            Enter the details of the new employee to add them to the system.
-          </p>
-        </div>
+        {/* <div> */}
+        <p>Enter the details of the new employee to add them to the system.</p>
+        {/* </div> */}
         <div>
           <div>
             <label>First Name</label>
