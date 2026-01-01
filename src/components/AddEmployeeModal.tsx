@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { CreateEmployee } from "../models/Employee";
 import { insertEmployee } from "../api/employeeService";
 import CloseIcon from "../assets/close.svg";
@@ -29,6 +29,16 @@ type AddEmployeeModalProps = {
 function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
   const [formData, setFormData] = useState<FormData>(initialState);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // Lock scroll
+    document.body.style.overflow = "hidden";
+    ////document.body.style->direct access to css of body
+    return () => {
+      // Unlock scroll on close
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   const handleCancel = () => {
     setFormData(initialState);
@@ -79,7 +89,7 @@ function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
     }
   };
   return (
-    // inset works with -> fixed|absolute|relative -> adds a layer bw to divs
+    // inset works with -> fixed|absolute|relative -> shorthand for top left right bottom
     //z index with with -> relative | absolute | fixed | sticky -> adds depth to the div
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
