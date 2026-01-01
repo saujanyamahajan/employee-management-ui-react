@@ -79,129 +79,135 @@ function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="bg-slate-300 rounded-md px-7 py-7 absolute right-0 z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
-        <div className="flex items-center ">
-          <h1 className="text-xl font-bold">Add New Employee</h1>
-          <button type="button" onClick={onClose} className="ml-auto">
-            <img src={CloseIcon} alt="Close" className="h-5 w-5" />
-          </button>
-        </div>
-        <div className="mt-1">
-          <p>
-            Enter the details of the new employee to add them to the system.
-          </p>
-        </div>
-        <div className="mt-5">
-          <div className="mt-2 flex flex-col gap-1">
-            <label className="text-sm font-medium text-gray-700">
-              First Name
-            </label>
-            <input
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="firstName"
-              type="text"
-              placeholder="Joe"
-              onChange={handleChange}
-              value={formData.firstName}
-            />
+    // inset works with -> fixed|absolute|relative -> adds a layer bw to divs
+    //z index with with -> relative | absolute | fixed | sticky -> adds depth to the div
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-slate-600/40" />
+      <form onSubmit={handleSubmit}>
+        <div className="bg-slate-300 rounded-md px-7 py-7 absolute right-0 z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+          <div className="flex items-center ">
+            <h1 className="text-xl font-bold">Add New Employee</h1>
+            <button type="button" onClick={onClose} className="ml-auto">
+              <img src={CloseIcon} alt="Close" className="h-5 w-5" />
+            </button>
           </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Last Name</label>
-            <input
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="lastName"
-              type="text"
-              placeholder="Dane"
-              onChange={handleChange}
-              value={formData.lastName}
-            />
+          <div className="mt-1">
+            <p>
+              Enter the details of the new employee to add them to the system.
+            </p>
           </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Email</label>
-            <input
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="joe.dane@gmail.com"
-            />
+          <div className="mt-5">
+            <div className="mt-2 flex flex-col gap-1">
+              <label className="text-sm font-medium text-gray-700">
+                First Name
+              </label>
+              <input
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="firstName"
+                type="text"
+                placeholder="Joe"
+                onChange={handleChange}
+                value={formData.firstName}
+              />
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Last Name</label>
+              <input
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="lastName"
+                type="text"
+                placeholder="Dane"
+                onChange={handleChange}
+                value={formData.lastName}
+              />
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Email</label>
+              <input
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="joe.dane@gmail.com"
+              />
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Phone</label>
+              <input
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="phone"
+                type="text"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+91-8800800021"
+              />
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Role</label>
+              <input
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="role"
+                type="text"
+                value={formData.role}
+                onChange={handleChange}
+                placeholder="Software Developer"
+              />
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Department</label>
+              <select
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="department"
+                value={formData.department}
+                onChange={handleChange}
+              >
+                <option value="">Select option</option>
+                <option value="engineering">Engineering</option>
+                <option value="product">Product</option>
+                <option value="design">Design</option>
+                <option value="marketing">Marketing</option>
+                <option value="sales">Sales</option>
+                <option value="humanResource">Human Resources</option>
+                <option value="finance">Finance</option>
+              </select>
+            </div>
+            <div className="mt-2 flex flex-col gap-1">
+              <label>Status</label>
+              <select
+                className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option value="">Select option</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+                <option value="onLeave">On Leave</option>
+              </select>
+            </div>
           </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Phone</label>
-            <input
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="phone"
-              type="text"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+91-8800800021"
-            />
-          </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Role</label>
-            <input
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="role"
-              type="text"
-              value={formData.role}
-              onChange={handleChange}
-              placeholder="Software Developer"
-            />
-          </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Department</label>
-            <select
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
+          <div className="mt-6 flex justify-end gap-3">
+            <button
+              className="mr-4 px-4 py-2 bg-white text-black rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
+              type="button"
+              onClick={handleCancel}
+              disabled={!isFormValid}
             >
-              <option value="">Select option</option>
-              <option value="engineering">Engineering</option>
-              <option value="product">Product</option>
-              <option value="design">Design</option>
-              <option value="marketing">Marketing</option>
-              <option value="sales">Sales</option>
-              <option value="humanResource">Human Resources</option>
-              <option value="finance">Finance</option>
-            </select>
-          </div>
-          <div className="mt-2 flex flex-col gap-1">
-            <label>Status</label>
-            <select
-              className="px-3 py-2 border border-black rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
+              Cancel
+            </button>
+            <button
+              className="px-4 py-2 bg-black text-white rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
+              type="submit"
+              disabled={loading || !isFormValid}
             >
-              <option value="">Select option</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
-              <option value="onLeave">On Leave</option>
-            </select>
+              {loading ? "Saving..." : "Add Employee"}
+            </button>
           </div>
         </div>
-        <div className="mt-6 flex justify-end gap-3">
-          <button
-            className="mr-4 px-4 py-2 bg-white text-black rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
-            type="button"
-            onClick={handleCancel}
-            disabled={!isFormValid}
-          >
-            Cancel
-          </button>
-          <button
-            className="px-4 py-2 bg-black text-white rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
-            type="submit"
-            disabled={loading || !isFormValid}
-          >
-            {loading ? "Saving..." : "Add Employee"}
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 

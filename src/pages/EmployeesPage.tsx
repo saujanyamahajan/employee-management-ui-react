@@ -31,7 +31,7 @@ const EmployeesPage = () => {
   }, []);
 
   return (
-    <div className="relative">
+    <div>
       <div className="employees-page ">
         <div className="header">
           <div>
