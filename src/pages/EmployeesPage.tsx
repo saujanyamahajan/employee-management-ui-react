@@ -32,7 +32,7 @@ const EmployeesPage = () => {
 
   return (
     <div className="relative">
-      <div className="employees-page bg-red-100">
+      <div className="employees-page ">
         <div className="header">
           <div>
             <h1>Employees</h1>

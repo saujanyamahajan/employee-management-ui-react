@@ -40,7 +40,18 @@ function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
+  const isFormValid =
+    formData.firstName.trim() !== "" &&
+    formData.lastName.trim() !== "" &&
+    formData.department.trim() !== "" &&
+    formData.email.trim() !== "" &&
+    formData.phone.trim() !== "" &&
+    formData.role.trim() !== "" &&
+    formData.status.trim() !== "";
+  // useEffect(() => {
+  //   console.log("formData", formData);
+  //   console.log("isFormValid", isFormValid);
+  // }, [formData, isFormValid]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -177,13 +188,14 @@ function AddEmployeeModal({ onClose }: AddEmployeeModalProps) {
             className="mr-4 px-4 py-2 bg-white text-black rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
             type="button"
             onClick={handleCancel}
+            disabled={!isFormValid}
           >
             Cancel
           </button>
           <button
             className="px-4 py-2 bg-black text-white rounded-md hover:bg-blue-700 active:scale-95 disabled:bg-gray-400"
             type="submit"
-            disabled={loading}
+            disabled={loading || !isFormValid}
           >
             {loading ? "Saving..." : "Add Employee"}
           </button>
