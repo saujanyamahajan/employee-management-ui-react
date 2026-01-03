@@ -1,5 +1,6 @@
 import type { Employee } from "../models/Employee";
 import "./EmployeeCard.css";
+import moreIcon from "../assets/more.svg";
 
 interface Props {
   employee: Employee;
@@ -20,6 +21,9 @@ const EmployeeCard = ({ employee }: Props) => {
           </h3>
           <p className="designation">{employee.designation}</p>
         </div>
+        <button className="ml-auto">
+          <img src={moreIcon} className="h-5 w-5" />
+        </button>
       </div>
 
       <div className="employee-card__body">
@@ -28,11 +32,7 @@ const EmployeeCard = ({ employee }: Props) => {
       </div>
 
       <div className="employee-card__footer">
-        <span
-          className={`status ${
-            employee.isActive ? "active" : "inactive"
-          }`}
-        >
+        <span className={`status ${employee.isActive ? "active" : "inactive"}`}>
           {employee.isActive ? "Active" : "Inactive"}
         </span>
       </div>
