@@ -2,16 +2,14 @@ import type { Employee } from "../models/Employee";
 import "./EmployeeCard.css";
 import moreIcon from "../assets/more.svg";
 import EmployeeCardMenu from "./EmployeeCardMenu";
-import { useState } from "react";
+
 interface Props {
   employee: Employee;
+  isMenuOpen: boolean;
+  onToggleMenu: () => void;
 }
 
-const EmployeeCard = ({ employee }: Props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsModalOpen((prev) => !prev);
-  };
+const EmployeeCard = ({ employee, isMenuOpen, onToggleMenu }: Props) => {
   return (
     <div className="employee-card">
       <div className="employee-card__header">
@@ -26,9 +24,13 @@ const EmployeeCard = ({ employee }: Props) => {
           </h3>
           <p className="designation">{employee.designation}</p>
         </div>
-        <button type="button" onClick={toggleMenu} className="ml-auto">
+        <button
+          type="button"
+          onClick={onToggleMenu}
+          className="ml-auto relative"
+        >
           <img src={moreIcon} className="h-5 w-5" />
-          {isModalOpen && <EmployeeCardMenu />}
+          {isMenuOpen && <EmployeeCardMenu />}
         </button>
       </div>
 

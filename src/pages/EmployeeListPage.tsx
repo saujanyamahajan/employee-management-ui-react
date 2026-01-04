@@ -1,6 +1,7 @@
 import type { Employee } from "../models/Employee";
 import EmployeeCard from "../components/EmployeeCard";
 import "./EmployeeListPage.css";
+import { useState } from "react";
 
 interface Props {
   employees: Employee[];
@@ -9,6 +10,10 @@ interface Props {
 }
 
 const EmployeeList = ({ employees, loading, error }: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState<number | null>(null);
+  const toggleMenu = (id: number) => {
+    setIsModalOpen((prev) => (prev === id ? null : id));
+  };
   if (loading) return <p>Loading employees...</p>;
   if (error) return <p>{error}</p>;
 
@@ -18,7 +23,12 @@ const EmployeeList = ({ employees, loading, error }: Props) => {
         <p>No employees found</p>
       ) : (
         employees.map((emp) => (
-          <EmployeeCard key={emp.employeeId} employee={emp} />
+          <EmployeeCard
+            key={emp.employeeId}
+            employee={emp}
+            isMenuOpen={isModalOpen === emp.employeeId}
+            onToggleMenu={() => toggleMenu(emp.employeeId)}
+          />
         ))
       )}
     </div>
