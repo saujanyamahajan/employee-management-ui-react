@@ -7,9 +7,10 @@ interface Props {
   employee: Employee;
   isMenuOpen: boolean;
   onToggleMenu: () => void;
+  onDelete: () => void;  
 }
 
-const EmployeeCard = ({ employee, isMenuOpen, onToggleMenu }: Props) => {
+const EmployeeCard = ({ employee, isMenuOpen, onToggleMenu, onDelete }: Props) => {
   return (
     <div className="employee-card">
       <div className="employee-card__header">
@@ -30,7 +31,7 @@ const EmployeeCard = ({ employee, isMenuOpen, onToggleMenu }: Props) => {
           className="ml-auto relative"
         >
           <img src={moreIcon} className="h-5 w-5" />
-          {isMenuOpen && <EmployeeCardMenu />}
+          {isMenuOpen && <EmployeeCardMenu onDelete={onDelete}/>}
         </button>
       </div>
 
